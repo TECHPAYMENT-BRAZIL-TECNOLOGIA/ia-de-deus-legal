@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-mail confirmado | IA de Deus</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: #FBF3E4; color: #3A2518; line-height: 1.7;
+         min-height: 100vh; display: flex; flex-direction: column; }
+  header { background: #6F7662; color: #FBF3E4; padding: 2.5rem 1.5rem; text-align: center; }
+  header .brand { font-size: 1.1rem; letter-spacing: .15em; text-transform: uppercase;
+                  color: #F5E6A8; margin-bottom: .5rem; }
+  header h1 { font-size: 1.8rem; font-weight: 700; }
+  main { max-width: 560px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+         text-align: center; flex: 1; }
+  main p { margin: 1rem 0; }
+  .btn { display: inline-block; margin-top: 1.2rem; padding: .9rem 2.2rem;
+         background: #F5E6A8; color: #3A2518; font-weight: 700; font-size: 1.05rem;
+         border: none; border-radius: 999px; cursor: pointer; text-decoration: none; }
+  .btn:active { transform: scale(.98); }
+  .hint { margin-top: 1.5rem; font-size: .95rem; color: #4A3020; }
+  footer { text-align: center; padding: 2rem 1rem; font-size: .85rem;
+            color: #4A3020; border-top: 1px solid #F5E6A8; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">IA de Deus</div>
+  <h1>E-mail confirmado</h1>
+</header>
+<main>
+  <p>Sua conta foi verificada com sucesso. Que bom ter você aqui.</p>
+  <p><a class="btn" id="openApp" href="#">Abrir o IA de Deus</a></p>
+  <p class="hint">Se o botão não abrir o app, volte ao IA de Deus no seu celular e entre com seu e-mail e senha.</p>
+</main>
+<footer>IA de Deus &middot; sua presença diária</footer>
+<script>
+  // O Supabase redireciona para cá com os tokens no fragmento (#access_token=...).
+  // O botão repassa o fragmento para o deep link do app (ia-de-deus://).
+  // O toque do usuário torna a abertura do app confiável no celular.
+  (function () {
+    var hash = window.location.hash || '';
+    var btn = document.getElementById('openApp');
+    btn.href = 'ia-de-deus://' + hash;
+  })();
+</script>
+</body>
+</html>
