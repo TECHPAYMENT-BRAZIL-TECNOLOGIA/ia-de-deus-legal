@@ -20,6 +20,8 @@
          background: #F5E6A8; color: #3A2518; font-weight: 700; font-size: 1.05rem;
          border: none; border-radius: 999px; cursor: pointer; text-decoration: none; }
   .btn:active { transform: scale(.98); }
+  .applink { display: inline-block; margin-top: 1.4rem; color: #6F7662;
+             font-weight: 600; text-decoration: underline; }
   .hint { margin-top: 1.5rem; font-size: .95rem; color: #4A3020; }
   footer { text-align: center; padding: 2rem 1rem; font-size: .85rem;
             color: #4A3020; border-top: 1px solid #F5E6A8; }
@@ -32,16 +34,20 @@
 </header>
 <main>
   <p>Sua conta foi verificada com sucesso. Que bom ter você aqui.</p>
-  <p><a class="btn" id="openApp" href="#">Abrir o IA de Deus</a></p>
-  <p class="hint">Se o botão não abrir o app, volte ao IA de Deus no seu celular e entre com seu e-mail e senha.</p>
+  <p><a class="btn" id="openSite" href="#">Continuar no site</a></p>
+  <p><a class="applink" id="openApp" href="#">Prefere o aplicativo? Abrir o app</a></p>
+  <p class="hint">Se nada abrir, volte ao IA de Deus e entre com seu e-mail e senha.</p>
 </main>
 <footer>IA de Deus &middot; sua presença diária</footer>
 <script>
   // O Supabase redireciona para cá com os tokens no fragmento (#access_token=...).
-  // O botão repassa o fragmento para o deep link do app (ia-de-deus://).
-  // O toque do usuário torna a abertura do app confiável no celular.
+  // Botão principal: continua no SITE (PWA), já logado, repassando os tokens.
+  // Link secundário: repassa o fragmento para o deep link do app (ia-de-deus://),
+  // que só funciona no celular com o aplicativo instalado.
   (function () {
     var hash = window.location.hash || '';
+    var site = document.getElementById('openSite');
+    site.href = 'https://techpayment-brazil-tecnologia.github.io/' + hash;
     var btn = document.getElementById('openApp');
     btn.href = 'ia-de-deus://' + hash;
   })();
